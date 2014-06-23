@@ -2,6 +2,10 @@
 
 <%= form_tag sessions_path do %>
 	<div class="field">
+		<%= label_tag :name %><br />
+		<%= text_field_tag :name %><br />
+	</div>
+	<div class="field">
 		<%= label_tag :email %><br />
 		<%= text_field_tag :email, params[:email] %>
 	</div>
