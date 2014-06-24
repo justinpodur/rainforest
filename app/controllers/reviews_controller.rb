@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_filter :load_product
-  before_filter :ensure_logged_in, :only => [:edit, :create, :show, :update, :destroy]
+  before_action :load_product
+  before_action :ensure_logged_in, :only => [:edit, :create, :show, :update, :destroy]
 
   def show
   	@review = Review.find(params[:id])
@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   	if @review.save
   		redirect_to products_path, notice: "Review created successfully"
   	else
+      flash.now[:alert] = "Comment not created"
   		render 'products/show'
   	end
 
