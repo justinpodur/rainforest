@@ -3,9 +3,24 @@
 <%= submit_tag "Search" %>
 <% end %>
 
-<h1>Listing Products</h1>
 <%= link_to 'New Product', new_product_path %>
 
-<div id="products">
-	<%= render @products %>
-</div>
+<!-- renders a helpful message with numbers of displayed vs. total entries -->
+
+<h1>Products <small><%= page_entries_info @products %></small></h1>
+
+<hr/>
+
+<ul>
+<% @products.each do |product| %>
+<%= link_to product_path(product.id) do %>
+<h2>
+	<%= product.formatted_price %>
+	<%= product.name %>
+</h2>
+<% end %>
+	<!-- keeps the description to 100 characters or less -->
+	<% end %>
+</ul>
+
+<%= paginate @products %>

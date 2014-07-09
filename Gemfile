@@ -34,6 +34,8 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 
 gem 'faker' #faker
+
+gem 'kaminari' #uses scopes to flow with queries
 # Use unicorn as the app server
 # gem 'unicorn'
 
