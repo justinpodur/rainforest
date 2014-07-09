@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   
   def index
     @products = if params[:search]
-      Products.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
   	else
       Product.all
     end
