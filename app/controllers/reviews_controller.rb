@@ -10,12 +10,15 @@ class ReviewsController < ApplicationController
   	@review = @product.reviews.build(review_params)
   	@review.user_id = current_user.id
 
+    respond_to do |format|
   	if @review.save
-  		redirect_to products_path, notice: "Review created successfully"
+      format.html {redirect_to product_path(@product.id), notice: 'Review added.'}
+      format.js {}
   	else
-      flash.now[:alert] = "Comment not created"
-  		render 'products/show'
+      format.html { render 'products/show', alert: 'There was an error.'}
+      format.js {}
   	end
+  end
 
   end
 
